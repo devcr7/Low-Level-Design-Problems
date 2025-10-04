@@ -42,8 +42,8 @@ public class KafkaController {
             System.err.println("Topic with ID: " + topicId + " doesn't exist.");
             return;
         }
-        TopicSubscriber ts = new TopicSubscriber(topic, subscriber); // imagine this as thread/event not a concrete subscriber
-        topicSubscribersMap.get(topicId).add(ts); // it takes the target subscriber as it's member
+        TopicSubscriber ts = new TopicSubscriber(topic, subscriber); // imagine this as a link or an edge not a concrete subscriber
+        topicSubscribersMap.get(topicId).add(ts); // it connects topic and subscriber
 
         // Submit the subscriber task to executor so that it starts listening to topic messages immediately
         subscriberExecutor.execute(new TopicSubscriberController(ts));

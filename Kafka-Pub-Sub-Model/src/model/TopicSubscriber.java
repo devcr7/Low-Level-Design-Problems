@@ -4,9 +4,7 @@ import subscriber.ISubscriber;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-// this is a thread / event(independent) not a concrete subscriber, it takes target subscriber as a member
-// and is created on each subscribe event trigger
-
+// this is a link / edge not a concrete subscriber, it connects topic and subscriber
 public class TopicSubscriber {
     private final Topic topic;
     private final ISubscriber subscriber;
