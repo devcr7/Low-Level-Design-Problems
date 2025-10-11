@@ -32,7 +32,8 @@ public class ChessGame implements BoardGame {
         this.status = ACTIVE;
     }
 
-    public void start() {
+    @Override
+    public void play() {
         Scanner scanner = new Scanner(System.in);
 
         while (this.status == ACTIVE) {

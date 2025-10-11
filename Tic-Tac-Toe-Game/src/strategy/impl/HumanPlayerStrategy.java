@@ -16,7 +16,7 @@ public class HumanPlayerStrategy implements PlayerStrategy {
     }
 
     @Override
-    public Cell  makeMove(Board board) {
+    public Cell makeMove(Board board) {
         while (true) {
             System.out.println(playerName + " please make your move");
 

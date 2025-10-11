@@ -1,11 +1,13 @@
-package game.impl;
+package controller.impl;
 
 import enums.Direction;
-import game.BoardGame;
+import controller.BoardGame;
 import strategy.IMovementStrategy;
 import utility.Board;
 import utility.Pair;
 import utility.Snake;
+
+import java.util.Scanner;
 
 
 public class SnakeGame implements BoardGame {
@@ -14,6 +16,7 @@ public class SnakeGame implements BoardGame {
     private final int[][] food;
     private int foodIndex;
     private final IMovementStrategy movementStrategy;
+    private final Scanner scanner;
 
     public SnakeGame(int width, int height, int[][] food, IMovementStrategy movementStrategy) {
         this.board = Board.getInstance(width, height);
@@ -22,6 +25,41 @@ public class SnakeGame implements BoardGame {
 
         this.snake = new Snake();
         this.movementStrategy = movementStrategy;
+        scanner = new Scanner(System.in);
+    }
+
+    @Override
+    public void play() {
+        int score = 0;
+        boolean gameRunning = true;
+
+        while (gameRunning) {
+            displayGameState();
+
+            System.out.print("Enter move (W/A/S/D) or Q to quit: ");
+            String input = scanner.nextLine().toUpperCase();
+
+            if(input.equals("Q")) {
+                System.out.println("Game ended by player. Final Score " + score);
+                gameRunning = false;
+                continue;
+            }
+
+            Direction direction = Direction.fromString(input);
+            if (direction == null) {
+                System.out.println("Invalid input");
+                continue;
+            }
+
+            score = move(direction);
+            if (score == -1) {
+                System.out.println("GAME OVER!");
+                System.out.println("Final score: " + (snake.getBody().size() - 1));
+                gameRunning = false;
+            } else {
+                System.out.println("Score: " + score);
+            }
+        }
     }
 
     public int move(Direction direction) {
@@ -44,8 +82,7 @@ public class SnakeGame implements BoardGame {
             return -1;
         }
 
-        boolean ateFood = (foodIndex < food.length) && (food[foodIndex][0] == newHeadRow)
-                && (food[foodIndex][1] == newHeadCol);
+        boolean ateFood = (foodIndex < food.length) && (food[foodIndex][0] == newHeadRow) && (food[foodIndex][1] == newHeadCol);
 
         if (ateFood) {
             foodIndex++;
@@ -60,7 +97,7 @@ public class SnakeGame implements BoardGame {
         return snake.getBody().size() - 1;
     }
 
-    public Snake getSnake() {
-        return snake;
+    private void displayGameState() {
+        System.out.println("nCurrent snake length: " + snake.getBody().size());
     }
 }

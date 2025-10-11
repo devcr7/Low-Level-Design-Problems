@@ -7,6 +7,6 @@ public class Main {
         Player player2 = new Player("Player 2", false);
 
         ChessGame game = new ChessGame(player1, player2);
-        game.start();
+        game.play();
     }
 }
