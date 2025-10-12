@@ -7,7 +7,7 @@ import state.GameState;
 import state.context.GameContext;
 import state.impl.OWonState;
 import state.impl.XWonState;
-import strategy.PlayerStrategy;
+import strategy.IPlayerStrategy;
 import utilty.Board;
 
 import static enums.Symbol.O;
@@ -20,7 +20,7 @@ public class TicTacToeGame implements BoardGame {
     private Player currentPlayer;
     private final GameContext gameContext;
 
-    public TicTacToeGame(PlayerStrategy xStrategy, PlayerStrategy oStrategy, int size) {
+    public TicTacToeGame(IPlayerStrategy xStrategy, IPlayerStrategy oStrategy, int size) {
         board = Board.getInstance(size);
         playerX = new Player(X, xStrategy);
         playerO = new Player(O, oStrategy);

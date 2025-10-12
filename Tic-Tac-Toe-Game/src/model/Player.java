@@ -1,13 +1,13 @@
 package model;
 
 import enums.Symbol;
-import strategy.PlayerStrategy;
+import strategy.IPlayerStrategy;
 
 public class Player {
     private final Symbol symbol;
-    private final PlayerStrategy strategy;
+    private final IPlayerStrategy strategy;
 
-    public Player (Symbol symbol, PlayerStrategy strategy) {
+    public Player (Symbol symbol, IPlayerStrategy strategy) {
         this.symbol = symbol;
         this.strategy = strategy;
     }
@@ -16,7 +16,7 @@ public class Player {
         return symbol;
     }
 
-    public PlayerStrategy getStrategy() {
+    public IPlayerStrategy getStrategy() {
         return strategy;
     }
 }

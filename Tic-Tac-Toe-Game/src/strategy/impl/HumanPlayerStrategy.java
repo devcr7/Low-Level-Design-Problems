@@ -1,12 +1,12 @@
 package strategy.impl;
 
 import model.Cell;
-import strategy.PlayerStrategy;
+import strategy.IPlayerStrategy;
 import utilty.Board;
 
 import java.util.Scanner;
 
-public class HumanPlayerStrategy implements PlayerStrategy {
+public class HumanPlayerStrategy implements IPlayerStrategy {
     private final Scanner scanner;
     private final String playerName;
 

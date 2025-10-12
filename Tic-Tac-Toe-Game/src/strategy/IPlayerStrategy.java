@@ -3,6 +3,6 @@ package strategy;
 import model.Cell;
 import utilty.Board;
 
-public interface PlayerStrategy {
+public interface IPlayerStrategy {
     Cell makeMove(Board board);
 }
