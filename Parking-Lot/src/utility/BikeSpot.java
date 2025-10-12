@@ -1,7 +1,7 @@
-package model;
+package utility;
 
 import enums.SpotType;
-import utility.ParkingSpot;
+import model.Vehicle;
 
 import static enums.VehicleType.BIKE;
 

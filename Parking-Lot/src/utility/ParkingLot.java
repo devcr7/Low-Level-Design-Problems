@@ -1,8 +1,6 @@
 package utility;
 
 import model.Address;
-import model.BikeSpot;
-import model.CarSpot;
 import model.Vehicle;
 
 import java.util.ArrayList;
