@@ -40,10 +40,6 @@ public abstract class FileSystemNode {
         return false;
     }
 
-    public String getName() {
-        return this.name;
-    }
-
     protected String getIcon() {
         if (isFile()) {
             return "\uD83D\uDCC4";

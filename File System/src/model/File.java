@@ -32,4 +32,5 @@ public class File extends FileSystemNode {
     public String getContent() {
         return content;
     }
+
 }
