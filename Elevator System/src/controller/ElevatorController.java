@@ -50,11 +50,8 @@ public class ElevatorController {
 
     public void requestFloor(int currentElevatorId, int floorNumber) {
         Elevator elevator = getElevatorById(currentElevatorId);
+        assert elevator != null;
         System.out.println("Internal request: Elevator " + elevator.getId());
-
-        Direction direction = floorNumber > elevator.getCurrentFloor()
-                ? Direction.UP
-                : Direction.DOWN;
 
         elevator.addRequest(new InternalElevatorRequest(currentElevatorId, floorNumber));
     }
@@ -63,9 +60,7 @@ public class ElevatorController {
         for (Elevator elevator : elevators) {
             if (!elevator.getRequests().isEmpty()) {
                 int nextStop = schedulingStrategy.nextStop(elevator);
-                if (elevator.getCurrentFloor() != nextStop) {
-                    elevator.moveToNextFloor(nextStop);
-                }
+                elevator.moveToNextFloor(nextStop);
             }
         }
     }
