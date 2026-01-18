@@ -20,7 +20,7 @@ public class ElevatorController {
     private int currentElevatorId;
 
     public ElevatorController(int numberOfElevators, int numberOfFloors) {
-        this.elevators = new ArrayList<Elevator>();
+        this.elevators = new ArrayList<>();
         this.floors = new ArrayList<>();
         this.schedulingStrategy = ScanSchedulingStrategy.getInstance();
         for (int i = 0; i < numberOfElevators; i++) {
